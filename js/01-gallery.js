@@ -10,30 +10,22 @@ const markup = galleryItems.reduce(
   (acc, { preview, original, description }) =>
     acc +
     `<li>
-<img scr="${preview}" alt="${description}" width="300px">
-</li>`, "");
+<img scr="${preview}" alt="${description}" data-source="${original}" width="300">
+</li>`,"");
 
 galleryContainer.insertAdjacentHTML('beforeend', markup);
-console.log(markup);
 
-//Реализация делегирования//
+//Реализация делегирования и открытие модального окна//
 galleryContainer.addEventListener("click", onClickItem);
+
 function onClickItem(evt) {
     if (evt.target.nodeName !== 'IMG') {
         return;
     }
+      const instance = basicLightbox.create(
+          `<img src="${evt.target.dataset.source}" alt="">`).show();
 
     console.log(evt.target);
     evt.target.classList.add('img-active');
-}
-
-//Открытие одального окна///
-const openModal = () => {
-    const instance = basicLightbox.create(`
-	<img
-    src='${preview}'
-    alt="'${description}'">`);
-    instance.show();
+    console.log(instance);
 };
-console.log(openModal);
-console.log(basicLightbox);
