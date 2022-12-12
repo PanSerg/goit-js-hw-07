@@ -12,7 +12,7 @@ const markup = galleryItems.reduce(
       acc +
       `<div class="gallery__item">
   <a class="gallery__item" href="${original}">
-    <img class="gallery__image"
+    <img loading="lazy" class="gallery__image"
 src="${preview}" alt="${description}" data-source="${original}"
 />
   </a>

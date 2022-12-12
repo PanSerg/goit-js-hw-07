@@ -35,7 +35,5 @@ function onClickItem(evt) {
 
     console.log(evt.target);
     evt.target.classList.add('img-active');
-    console.log(instance);
+  console.log(instance);
 };
-
-
